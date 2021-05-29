@@ -98,6 +98,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                     .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                     .and()
+                    .logout().disable()
+                    
                 .authorizeRequests()
                     .antMatchers("/",
                         "/error",
@@ -110,11 +112,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                         .permitAll()
-                    .antMatchers("/auth/**", "/oauth2/**")
+                    .antMatchers("/auth/**", "/oauth2/**", "/login/**", "/logout/**")
                         .permitAll()
-                     //.antMatchers("/inventory/**").hasAuthority("InvTeam")
-                     //.antMatchers("/adminTeam/**").hasAuthority("Admin")
-                     //.antMatchers("/dlTeam/**").hasAuthority("DLTeam")
+                     .antMatchers("/invTeamPage/**","/dlTeamPage/**","/adminPage/**", "/profile/**","/unauthorized","/notFound", "/manifest.json", "/static/**").permitAll()//hasAuthority("InvTeam")
+                     
+                     //.antMatchers("/adminPage/**").hasAuthority("Admin")
+                     //.antMatchers("/dlTeamPage/**").hasAuthority("DLTeam")
                     .anyRequest()
                         .authenticated()
                     .and()

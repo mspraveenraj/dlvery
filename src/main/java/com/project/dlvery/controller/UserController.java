@@ -70,14 +70,11 @@ public class UserController {
     		String paramUsername = allParams.get("username");
     		String paramFirstName = allParams.get("firstName");
     		String paramTeamId = allParams.get("team.id");
-    		System.out.println(paramTeamId);
     		String paramEmail = allParams.get("email");
     		
     		if(paramUsername != null || paramFirstName !=null || paramTeamId != null || paramEmail != null)
     		{
-    			System.out.println(paramUsername+" "+ paramFirstName+" "+ paramTeamId+" "+ paramEmail);
     			List<User> paramsList = userService.findUsersWithPredicate(paramUsername, paramFirstName, paramTeamId, paramEmail);
-    			System.out.println(paramsList);
     			return new ResponseEntity<>(paramsList, HttpStatus.OK);
     		}
     		
@@ -154,7 +151,6 @@ public class UserController {
     		return ResponseEntity.notFound().build();
     	
     	updatedUser.setTeam(teamOptional.get());
-    	
     	
     	userService.updateUser(updatedUser);
 

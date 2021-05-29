@@ -19,6 +19,7 @@ public class FilterToAddHeaders extends OncePerRequestFilter {
 
         response.addHeader("Access-Control-Expose-Headers", "X-Total-Count");
 		response.addHeader("X-Total-Count", String.valueOf(20));
+		//response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
 		//response.addHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
 		//response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
 		//response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");

@@ -102,7 +102,6 @@ public class ProductCategoryController {
     	{
     		Optional<ProductCategory> prevproductCategory = productCategoryService.findById(id);
     		if(prevproductCategory.isPresent()) {
-    			System.out.println(prevproductCategory.get().getId());
     			return new ResponseEntity<>(prevproductCategory.get(), HttpStatus.OK);
     		}
     	}

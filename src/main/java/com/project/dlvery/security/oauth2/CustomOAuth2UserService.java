@@ -49,7 +49,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     private OAuth2User processOAuth2User(OAuth2UserRequest oAuth2UserRequest, OAuth2User oAuth2User) {
         OAuth2UserInfo oAuth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(oAuth2UserRequest.getClientRegistration().getRegistrationId(), oAuth2User.getAttributes());
         if(StringUtils.isEmpty(oAuth2UserInfo.getEmail())) {
-        	System.out.println("empty email");
+        	
             throw new OAuth2AuthenticationProcessingException("Email not found from OAuth2 provider");
         }
 
@@ -64,13 +64,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                         " account to login.");
             }
             user = updateExistingUser(user, oAuth2UserInfo);
-            System.out.println(user.getEmail()+ "existing user error");
+            
         } else {
         	throw new OAuth2AuthenticationProcessingException("You are not existing user. Please contact your Administrator");
             //user = registerNewUser(oAuth2UserRequest, oAuth2UserInfo);
             //System.out.println(user.getEmail()+ "register user error");
         }
-        System.out.println("return error");
+       
         return UserPrincipal.create(user, oAuth2User.getAttributes());
     }
 
@@ -95,9 +95,12 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 //    }
 
     private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
-        existingUser.setFirstName(oAuth2UserInfo.getName());
+    	String name[] = oAuth2UserInfo.getName().split(" ");
+        existingUser.setFirstName(name[0]);
+        if(name[1].length()>0) {
+        	existingUser.setLastName(name[1]);
+        }
         //existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
-        System.out.println(existingUser.getEmail()+" at existing new user "+ oAuth2UserInfo.getName());
         return userRepository.save(existingUser);
     }
 
