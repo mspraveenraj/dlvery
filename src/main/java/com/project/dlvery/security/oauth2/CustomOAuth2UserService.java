@@ -58,7 +58,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         if(userOptional.isPresent()) {
             user = userOptional.get();
             if(!user.getProvider().equals(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))) {
-            	System.out.println("provider error");
+            	
                 throw new OAuth2AuthenticationProcessingException("Looks like you're signed up with " +
                         user.getProvider() + " account. Please use your " + user.getProvider() +
                         " account to login.");
@@ -66,33 +66,33 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             user = updateExistingUser(user, oAuth2UserInfo);
             
         } else {
-        	throw new OAuth2AuthenticationProcessingException("You are not existing user. Please contact your Administrator");
-            //user = registerNewUser(oAuth2UserRequest, oAuth2UserInfo);
+        	//throw new OAuth2AuthenticationProcessingException("You are not existing user. Please contact your Administrator");
+            user = registerNewUser(oAuth2UserRequest, oAuth2UserInfo);
             //System.out.println(user.getEmail()+ "register user error");
         }
        
         return UserPrincipal.create(user, oAuth2User.getAttributes());
     }
 
-//    private User registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
-//        User user = new User();
-//
-//        user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
-//        user.setProviderId(oAuth2UserInfo.getId());
-//        String nameSplit[] = oAuth2UserInfo.getName().split(" ");
-//        user.setFirstName(nameSplit[0]);
-//        if(nameSplit[1] != "")
-//        	user.setLastName(nameSplit[1]);
-//        user.setEmail(oAuth2UserInfo.getEmail());
-//        user.setUsername(oAuth2UserInfo.getEmail());
-//        
-//        Optional<Team> teamOptional = teamRepository.findByTeamName("DLTeam");
-//       if(teamOptional.isPresent())
-//    	   user.setTeam(teamOptional.get());
-//        //user.setImageUrl(oAuth2UserInfo.getImageUrl());
-//        System.out.println(user.getEmail()+" at register new user");
-//        return userRepository.save(user);
-//    }
+    private User registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
+        User user = new User();
+
+        user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
+        user.setProviderId(oAuth2UserInfo.getId());
+        String nameSplit[] = oAuth2UserInfo.getName().split(" ");
+        user.setFirstName(nameSplit[0]);
+        if(nameSplit[1].length()>0)
+        	user.setLastName(nameSplit[1]);
+        user.setEmail(oAuth2UserInfo.getEmail());
+        user.setUsername(oAuth2UserInfo.getEmail().split("@")[0]);
+        
+        Optional<Team> teamOptional = teamRepository.findByTeamName("DLTeam");
+       if(teamOptional.isPresent())
+    	   user.setTeam(teamOptional.get());
+        //user.setImageUrl(oAuth2UserInfo.getImageUrl());
+        System.out.println(user.getEmail()+" at register new user");
+        return userRepository.save(user);
+    }
 
     private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {
     	String name[] = oAuth2UserInfo.getName().split(" ");
