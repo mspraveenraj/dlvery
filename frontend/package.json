@@ -48,5 +48,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8070"
+  "proxy": "https://dlvery-deployment.herokuapp.com"
 }

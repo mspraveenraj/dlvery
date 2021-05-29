@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 
 //const INSTRUCTOR = 'in28minutes'
-const COURSE_API_URL = 'http://localhost:8070'
+const COURSE_API_URL = 'https://dlvery-deployment.herokuapp.com'
 //const INSTRUCTOR_API_URL = `${COURSE_API_URL}/listInventories/${INSTRUCTOR}`
 const INVENTORY_API_URL = `${COURSE_API_URL}`
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, ACCESS_TOKEN } from '../constants';
+import { GOOGLE_AUTH_URL, ACCESS_TOKEN, FACEBOOK_AUTH_URL } from '../constants';
 import { login } from '../util/APIUtils';
 import { Redirect } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,7 +40,6 @@ class Login extends Component {
         return (
             <div className="generallogin-box">
             <div className="generallb-header">
-               
                 <img id="login-box-link" src={dlvery_logo} width="50px" height="50px" alt={"dlveryLogo"} />
             </div>
             <br/><br/>
@@ -54,6 +53,44 @@ class Login extends Component {
     }
 }
 
+//For FB put this below in Google
+//<a href={FACEBOOK_AUTH_URL}>
+            //<i className="fa fa-facebook fa-lg"></i>
+            //     Login with Facebook
+           // </a>
+//Below is CSS
+//.social-login{
+  //  position:relative;
+  //  float: left;
+  //  width: 100%;
+  //  height:auto;
+   // padding: 10px 0 15px 0;
+   // border-bottom: 1px solid #eee;
+  //}
+           //.social-login a{
+           // position:relative;
+           // float: left;
+           // width:calc(40% - 8px);
+           // text-decoration: none;
+           // color: #fff;
+           // border: 1px solid rgba(0,0,0,0.05);
+           // padding: 12px;
+           // border-radius: 2px;
+           // font-size: 12px;
+           // text-transform: uppercase;
+           // margin: 0 3%;
+           // text-align:center;
+         // }
+         // .social-login a i{
+          //  position: relative;
+          //  float: left;
+          //  width: 20px;
+          //  top: 2px;
+         // }
+
+//.social-login a:last-child{
+ //  background-color: #49639F ;
+  // }
 class SocialLogin extends Component {
     render() {
         return (
@@ -61,10 +98,6 @@ class SocialLogin extends Component {
             <a href={GOOGLE_AUTH_URL}>
                 <i className="fa fa-google fa-lg"></i>
                 Login with Google
-            </a>
-            <a href={FACEBOOK_AUTH_URL}>
-            <i className="fa fa-facebook fa-lg"></i>
-                 Login with Facebook
             </a>
             </div>
         );

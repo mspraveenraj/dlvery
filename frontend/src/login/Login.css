@@ -67,10 +67,9 @@ body{
   }
   .social-login a:first-child{
     background-color: #DF4A32;
+    margin-left: 140px;
   }
-  .social-login a:last-child{
-    background-color: #49639F ;
-  }
+  
   .generalusername-login,.generalusername-signup{
     position:relative;
     float: left;
