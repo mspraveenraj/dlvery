@@ -7,8 +7,8 @@ matrix:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker pull openjdk:11-jre-slim-sid
       script:
-        - ./mvnw clean install
-        - ./mvnw deploy jib:build -P deploy-docker
+        - mvn clean install
+        - mvn deploy jib:build -P deploy-docker
 
     - language: node_js
       node_js:
