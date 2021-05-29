@@ -8,10 +8,14 @@ matrix:
         - docker pull openjdk:11-jre-slim-sid
       script:
         - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-        - mvn heroku:deploy jib:build -P deploy-heroku,deploy-docker
+        - mvn jib:build -P deploy-docker
       after_success:
         - bash <(curl -s https://codecov.io/bash)
-
+      deploy:
+        provider: heroku
+        api-key:
+          secure: $HEROKU_API_KEY
+        app: dlvery-deployment
 #    - language: node_js
 #      node_js:
 #        - 15.5.1
