@@ -8,7 +8,7 @@ matrix:
         - docker pull openjdk:11-jre-slim-sid
       script:
         - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-        - mvn deploy jib:build -P deploy-docker
+        - mvn heroku:deploy jib:build -P deploy-heroku,deploy-docker
       after_success:
         - bash <(curl -s https://codecov.io/bash)
 
