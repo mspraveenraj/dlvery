@@ -7,8 +7,10 @@ matrix:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker pull openjdk:11-jre-slim-sid
       script:
-        - mvn clean install
+        - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
         - mvn deploy jib:build -P deploy-docker
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
 
 #    - language: node_js
 #      node_js:
