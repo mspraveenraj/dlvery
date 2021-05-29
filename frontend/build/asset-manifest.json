@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.aafe30eb.chunk.css",
+    "main.js": "/static/js/main.c9220207.chunk.js",
+    "main.js.map": "/static/js/main.c9220207.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1245677d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1245677d.js.map",
+    "static/css/2.8b5fe69b.chunk.css": "/static/css/2.8b5fe69b.chunk.css",
+    "static/js/2.7f9727c5.chunk.js": "/static/js/2.7f9727c5.chunk.js",
+    "static/js/2.7f9727c5.chunk.js.map": "/static/js/2.7f9727c5.chunk.js.map",
+    "static/js/3.cc44a36b.chunk.js": "/static/js/3.cc44a36b.chunk.js",
+    "static/js/3.cc44a36b.chunk.js.map": "/static/js/3.cc44a36b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.8b5fe69b.chunk.css.map": "/static/css/2.8b5fe69b.chunk.css.map",
+    "static/css/main.aafe30eb.chunk.css.map": "/static/css/main.aafe30eb.chunk.css.map",
+    "static/js/2.7f9727c5.chunk.js.LICENSE.txt": "/static/js/2.7f9727c5.chunk.js.LICENSE.txt",
+    "static/media/Unauthorized.css": "/static/media/404.181c5a64.gif",
+    "static/media/google-logo.d74131b9.png": "/static/media/google-logo.d74131b9.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1245677d.js",
+    "static/css/2.8b5fe69b.chunk.css",
+    "static/js/2.7f9727c5.chunk.js",
+    "static/css/main.aafe30eb.chunk.css",
+    "static/js/main.c9220207.chunk.js"
+  ]
+}
