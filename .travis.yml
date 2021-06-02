@@ -11,8 +11,3 @@ matrix:
         - mvn jib:build -P deploy-docker
       after_success:
         - bash <(curl -s https://codecov.io/bash)
-      deploy:
-        provider: heroku
-        api-key:
-          secure: $HEROKU_API_KEY
-        app: dlvery-deployment
