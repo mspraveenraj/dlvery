@@ -47,7 +47,7 @@ class ChangeAddress extends React.Component {
         
         <form onSubmit={this.handleSubmit}>
         
-          <input type="text" name="addressLine1" onChange={this.handleChange} value={this.state.address.addressLine1 || ''} placeholder="Address Line 1"/>
+          <input type="text" name="addressLine1" onChange={this.handleChange} value={this.state.address.addressLine1 || ''} autoFocus placeholder="Address Line 1"/>
         
           <input type="text" name="addressLine2" onChange={this.handleChange} value={this.state.address.addressLine2 || ''} placeholder="Address Line 2"/>
   
@@ -68,7 +68,7 @@ const content =  (this.state.loading)
 
 return (
     <>
-    <div>{content}</div>
+    <div style={{marginTop: "60px"}}>{content}</div>
    </>
     )
   }

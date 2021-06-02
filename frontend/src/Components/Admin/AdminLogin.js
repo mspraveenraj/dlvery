@@ -61,9 +61,9 @@ class AdminLogin extends Component {
         </div>
       </div>
       <form className="login-form" onSubmit={this.handleSubmit}>
-        <input type="text"  name="username" placeholder="username" onChange={this.handleInputChange} value={this.state.username} autocomplete="username" required/>
+        <input type="text"  name="username" placeholder="username" onChange={this.handleInputChange} value={this.state.username} autoFocus autoComplete="username" required/>
         <br/>
-        <input type="password" name="password" placeholder="password" onChange={this.handleInputChange} value={this.state.password} autocomplete="current-password" required/>
+        <input type="password" name="password" placeholder="password" onChange={this.handleInputChange} value={this.state.password} autoComplete="current-password" required/>
         <button type="submit">login</button>
       </form>
     </div>

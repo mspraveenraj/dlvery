@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { GOOGLE_AUTH_URL, ACCESS_TOKEN, FACEBOOK_AUTH_URL } from '../constants';
+import { GOOGLE_AUTH_URL, ACCESS_TOKEN } from '../constants';
 import { login } from '../util/APIUtils';
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import dlvery_logo from '../img/dlvery_logo.png'
@@ -42,12 +42,15 @@ class Login extends Component {
             <div className="generallb-header">
                 <img id="login-box-link" src={dlvery_logo} width="50px" height="50px" alt={"dlveryLogo"} />
             </div>
-            <br/><br/>
+        
             <h2 style={{textAlign: "center", fontSize: "20px"}}>DLTeam Login</h2>
-            <br/><br/>
+            <br/>
                 <SocialLogin />
-            <h2 style={{textAlign: "center", fontSize: "20px", paddingTop:"100px"}}>InvTeam Login</h2>
+            <h2 style={{textAlign: "center", fontSize: "20px", paddingTop:"80px"}}>InvTeam Login</h2>
                 <LoginForm {...this.props} />
+            <div>
+                <p style={{textAlign: "right", paddingTop: "90%"}}>Built by, <a className="myPortfolio" onClick={() => this.props.history.push("/praveenrajms")}  target="_blank">PraveenRajMS</a> </p>
+            </div>
             </div>
         );
     }
@@ -150,10 +153,10 @@ class LoginForm extends Component {
             
             <form className="generalusername-login" onSubmit={this.handleSubmit}>
                 <div className="generalu-form-group">
-                    <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} autocomplete="username" required/>
+                    <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleInputChange} autoFocus autoComplete="username" required/>
                 </div>
                 <div className="generalu-form-group">
-                     <input type="password" name="password" placeholder="Password"  value={this.state.password} onChange={this.handleInputChange} autocomplete="current-password" required/>
+                     <input type="password" name="password" placeholder="Password"  value={this.state.password} onChange={this.handleInputChange} autoComplete="current-password" required/>
                 </div>
                 <div className="generalu-form-group">
                     <button type="submit">Log in</button>

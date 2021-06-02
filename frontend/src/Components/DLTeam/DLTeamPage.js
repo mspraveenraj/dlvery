@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import HomePageDataService from '../../HomePageDataService'
 import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -11,7 +10,6 @@ import DLTeamDeliveryPriority from './DLTeamDeliveryPriority'
 import DLTeamContext from './DLTeamContext'
 import DLTeamDeliveryPending from './DLTeamDeliveryPending'
 import DLTeamDeliveryAll from './DLTeamDeliveryAll'
-
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -50,6 +48,7 @@ function TabPanel(props) {
     root: {
       backgroundColor: theme.palette.background.paper,
       //width: 500,
+      marginTop: "60px"
     },
   }));
 
@@ -64,7 +63,7 @@ const DLTeamPage = (props) => {
                     {
                         setInventoryData(response.data)
                     })
-        },[]
+        },[props.currentUser.username]
     )
 
     
@@ -76,19 +75,18 @@ const DLTeamPage = (props) => {
       setValue(newValue);
     };
   
-    const handleChangeIndex = (index) => {
-      setValue(index);
-    };
+    //const handleChangeIndex = (index) => {
+     // setValue(index);
+    //};
 
     return(
         
-       
         <DLTeamContext.Provider value = {inventoryData} >
 
         <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          value={value}
+          value={false}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
@@ -100,11 +98,7 @@ const DLTeamPage = (props) => {
           <Tab label="All" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
+      
         <TabPanel value={value} index={0} dir={theme.direction}>
           <DLTeamDeliveryPriority/>
         </TabPanel>
@@ -114,12 +108,9 @@ const DLTeamPage = (props) => {
         <TabPanel value={value} index={2} dir={theme.direction}>
           <DLTeamDeliveryAll/>
         </TabPanel>
-      </SwipeableViews>
-    </div>
-
-        <div>
-        </div>
-        </DLTeamContext.Provider>
+ 
+      </div>
+      </DLTeamContext.Provider>
 
     )
 }

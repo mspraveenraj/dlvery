@@ -93,9 +93,7 @@ class App1 extends Component {
         <div >
           { this.state.currentUser!==null && this.state.currentUser.team.teamName!== "Admin" 
               && <PrivateRoute component={AppHeader1} roles={["Admin", "InvTeam", "DLTeam"]} authenticated={this.state.authenticated} currentUser={this.state.currentUser} />
-
-              //<AppHeader1 authenticated={this.state.authenticated} onLogout={this.handleLogout} /> 
-            }
+          }
         </div>
         <div >
           <Switch>
@@ -132,6 +130,11 @@ class App1 extends Component {
             <Route exact path="/adminPage/login"
                     render={(props) => <AdminLogin authenticated={this.state.authenticated} {...props} />}></Route>
             <PrivateRoute exact path="/adminPage" component={AdminPage} roles={["Admin"]} authenticated={this.state.authenticated} currentUser={this.state.currentUser}/>
+
+            <Route exact
+                 path="/praveenrajms"
+                render={ () => window.location = "https://bit.ly/praveenrajms" }
+              />
             
             <Route exact path="/unauthorized">
                <Unauthorized /> </Route>

@@ -48,7 +48,7 @@ class ChangePassword extends React.Component {
     render() {
       require("./ChangePassword.css");
     return (
-    <>
+    <div style={{marginTop: "60px", padding: "2%"}}>
     {this.state.loading && <LoadingIndicator/>}
     
     <div id="password-box">
@@ -57,9 +57,11 @@ class ChangePassword extends React.Component {
         
         <form onSubmit={this.handleSubmit}>
         
-          <input type="password" name="password" onChange={this.handleChange} placeholder="New Password" autocomplete="new-password" required/>
+          <input hidden type="text" name="username" value={this.props.currentUser.username} autoComplete="username" disabled/>
+          <input type="password" name="password" onChange={this.handleChange} placeholder="New Password" autoFocus autoComplete="new-password" required/>
         
-          <input type="password" name="confirmPassword" onChange={this.handleConfirmChange} placeholder="Re-Enter Password" autocomplete="new-password" required />
+          <input type="password" name="confirmPassword" onChange={this.handleConfirmChange} placeholder="Re-Enter Password" autoComplete="new-password" required />
+          <br/>
           {this.state.notMatch && <h3 style={{margin: "0 0 20px 0", fontWeight: "300", fontSize: "18px", color: "rgb(255, 0, 0)" } } >Password Doesn't Match</h3>}
 
           <button type="submit">Submit</button>
@@ -67,7 +69,7 @@ class ChangePassword extends React.Component {
          </form>
         </div>
     </div>
-   </>
+   </div>
     )
   }
 }

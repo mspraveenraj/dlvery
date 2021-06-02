@@ -27,8 +27,6 @@ const DLTeamDeliveryAll = (props) => {
         history.push(`/dlTeamPage/inventory/${id}`)
     }
 
-    
-
     let idValue;
     const columns = [
             {field: "", headerName: "Update", width: 100, filterable: false, sortable: false, disableClickEventBubbling: true,

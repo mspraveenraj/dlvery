@@ -5,6 +5,7 @@ import moment from 'moment'
 import HomePageDataService from '../../HomePageDataService';
 import { toast } from 'react-toastify';
 import history from '../../history';
+import LoadingIndicator from '../../common/LoadingIndicator';
 
 class UpdateInventoryForm extends React.Component {
 
@@ -234,11 +235,11 @@ class UpdateInventoryForm extends React.Component {
       </div>
 
 const content =  (this.state.inventoryLoading && this.state.productCategoryLoading && this.state.productStatusLoading && this.state.deliveryAgentsLoading)
-        ? "Loading" : form ;
+        ? <LoadingIndicator/> : form ;
 
 return (
     <>
-    <div>{content}</div>
+    <div style={{marginTop: "60px"}}>{content}</div>
    </>
     )
   }

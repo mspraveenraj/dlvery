@@ -6,7 +6,7 @@ import { TeamList, TeamEdit, TeamCreate } from './Teams';
 import { ProductCategoryList, ProductCategoryEdit, ProductCategoryCreate } from './ProductCategory';
 import jsonServerProvider from 'ra-data-json-server';
 import { Person, Group, AddBoxTwoTone } from '@material-ui/icons';
-import { ACCESS_TOKEN } from '../../constants';
+import { ACCESS_TOKEN, API_BASE_URL } from '../../constants';
 import AdminLogin from './AdminLogin';
 
   const httpClient = (url, options = {}) => {
@@ -18,7 +18,7 @@ import AdminLogin from './AdminLogin';
     return fetchUtils.fetchJson(url, options);
 }
 
-const dataProvider = jsonServerProvider("http://localhost:8070", httpClient);
+const dataProvider = jsonServerProvider(API_BASE_URL, httpClient);
 
 const AdminPage = () => (
     <Admin dashboard={Dashboard} dataProvider={dataProvider} loginPage={AdminLogin} >

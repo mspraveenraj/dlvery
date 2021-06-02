@@ -5,6 +5,7 @@ class Profile extends React.Component {
     render() {
         require("./Profile.css")
         return (
+            <div stye={{marginTop: "60px"}} >
             <div className="profile-container">
 
                     <div className="profile-info">
@@ -26,7 +27,7 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+                </div>
         );
     }
 }

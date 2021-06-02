@@ -8,6 +8,7 @@ import history from './../../history';
 import SignaturePad from 'react-signature-canvas'
 import Popup from "reactjs-popup";
 import "./sigCanvas.css";
+import LoadingIndicator from '../../common/LoadingIndicator';
 
 class DLTeamUpdateInventory extends React.Component {
 
@@ -244,11 +245,11 @@ class DLTeamUpdateInventory extends React.Component {
       </div>
 
 const content =  (this.state.inventoryLoading && this.state.productCategoryLoading && this.state.productStatusLoading)
-        ? "Loading" : form ;
+        ? <LoadingIndicator/> : form ;
 
 return (
     <>
-    <div>{content}</div>
+    <div style={{marginTop: "60px"}}>{content}</div>
    </>
     )
   }

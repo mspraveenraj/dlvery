@@ -15,10 +15,10 @@ body {
 
 #dlTeamInventory-box {
   position: relative;
-  padding: 100px;
+  padding: 2%;
   margin: 5% auto;
   width: 300px;
-  height: 1050px;
+  height: 1200px;
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -29,7 +29,7 @@ body {
   top: 0;
   left: 0;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 10%;
   width: 300px;
   height: 400px;
 }

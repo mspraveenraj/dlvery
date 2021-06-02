@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react"
 import { DataGrid } from '@material-ui/data-grid';
 import DLTeamContext from './DLTeamContext'
 import history from '../../history';
-import LoadingIndicator from '../../common/LoadingIndicator'
+
 const DLTeamDeliveryPriority = (props) => {
     require("./DLTeamDelivery.css");
 
@@ -36,8 +36,6 @@ const DLTeamDeliveryPriority = (props) => {
     const updateInventoryClicked = (id) => {
         history.push(`/dlTeamPage/inventory/${id}`)
     }
-
-    
 
     let idValue;
     const columns = [
@@ -75,8 +73,7 @@ const DLTeamDeliveryPriority = (props) => {
           ];
 
         return (
-          <>
-         {isLoading   && <LoadingIndicator/>}
+      
         <div className="dlTeam-container">
             <h3 style={{marginLeft: '20px', fontSize: '20px', marginTop: '30px', marginBottom: '30px'}}>Priority Deliveries</h3>
             
@@ -92,7 +89,7 @@ const DLTeamDeliveryPriority = (props) => {
             />
             </div>
         </div>
-        </>
+
         )
            
                     

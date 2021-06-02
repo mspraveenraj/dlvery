@@ -32,7 +32,6 @@ class Home extends Component {
                         </div>
                     </div>
                     <h1 className="home-title">Welcome to Dlvery App</h1>
-                    <h3 className="home-title">Let's get to Work...</h3>
                 </div>
         )
     }

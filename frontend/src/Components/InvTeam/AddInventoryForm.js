@@ -6,6 +6,7 @@ import HomePageDataService from '../../HomePageDataService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import history from '../../history';
+import LoadingIndicator from '../../common/LoadingIndicator';
 
 class AddInventoryForm extends React.Component {
 
@@ -106,7 +107,7 @@ class AddInventoryForm extends React.Component {
         <label>
           <p>Product Name</p>
         </label>
-          <input type="text" name="productName" onChange={this.handleChange} value={inventory.productName || ''} autoComplete="off" required/>
+          <input type="text" name="productName" onChange={this.handleChange} value={inventory.productName || ''} autoFocus autoComplete="off" required/>
      
     <br/>
         <label>
@@ -203,10 +204,10 @@ class AddInventoryForm extends React.Component {
       </div>
 
 const content =  (this.state.productCategoryLoading && this.state.productStatusLoading && this.state.deliveryAgentsLoading)
-        ? "Loading" : form ;
+        ? <LoadingIndicator/> : form ;
 
 return (
-    <div>{content}</div>
+    <div style={{marginTop: "60px"}}>{content}</div>
     )
   }
 }
