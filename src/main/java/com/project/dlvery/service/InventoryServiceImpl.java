@@ -81,19 +81,25 @@ public class InventoryServiceImpl implements InventoryService {
 		List<InventoryExport> inventoryExport = new ArrayList<>();
 		for(int i=0; i<viewInv.size(); i++) {
 			InventoryExport invExport = new InventoryExport();
-			invExport.setId(viewInv.get(i).getId());
-			invExport.setSku(viewInv.get(i).getSku());
-			invExport.setProductName(viewInv.get(i).getProductName());
-			invExport.setProductCategory(viewInv.get(i).getProductCategory().getName());
-			invExport.setDateIn(viewInv.get(i).getDateIn());
-			invExport.setDateOut(viewInv.get(i).getDateOut());
-			invExport.setExpiryDate(viewInv.get(i).getExpiryDate());
-			invExport.setProductStatus(viewInv.get(i).getProductStatus().getStatus());
-			invExport.setUsername(viewInv.get(i).getUser().getUsername());
-			invExport.setCustomerName(viewInv.get(i).getCustomerName());
-			invExport.setCustomerSignature(viewInv.get(i).getCustomerSignature());
-			invExport.setEntryBy(viewInv.get(i).getEntryBy());
-			invExport.setEntryDate(viewInv.get(i).getEntryDate());
+			if(viewInv.size()>0 && viewInv.get(i)!=null)
+			{	
+				invExport.setId(viewInv.get(i).getId());
+				invExport.setSku(viewInv.get(i).getSku());
+				invExport.setProductName(viewInv.get(i).getProductName());
+				if(viewInv.get(i).getProductCategory()!= null)
+					invExport.setProductCategory(viewInv.get(i).getProductCategory().getName());
+				invExport.setDateIn(viewInv.get(i).getDateIn());
+				invExport.setDateOut(viewInv.get(i).getDateOut());
+				invExport.setExpiryDate(viewInv.get(i).getExpiryDate());
+				if(viewInv.get(i).getProductStatus()!= null)
+					invExport.setProductStatus(viewInv.get(i).getProductStatus().getStatus());
+				if(viewInv.get(i).getUser()!=null)
+					invExport.setUsername(viewInv.get(i).getUser().getUsername());
+				invExport.setCustomerName(viewInv.get(i).getCustomerName());
+				invExport.setCustomerSignature(viewInv.get(i).getCustomerSignature());
+				invExport.setEntryBy(viewInv.get(i).getEntryBy());
+				invExport.setEntryDate(viewInv.get(i).getEntryDate());
+			}
 			inventoryExport.add(invExport);
 		}
 		return inventoryExport;

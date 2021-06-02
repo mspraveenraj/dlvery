@@ -31,6 +31,6 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 	boolean existsByEmail(String email);
 
 	Optional<User> findByEmail(String email);
-
+	void deleteByUsername(String username);
 
 }

@@ -1,8 +1,5 @@
 package com.project.dlvery.controller;
 
-import java.net.URI;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.project.dlvery.entity.AuthProvider;
-import com.project.dlvery.entity.Team;
-import com.project.dlvery.entity.User;
-/*
-@CrossOrigin(origins = "*", maxAge = 3600)
-@RestController
-@RequestMapping("/api/auth")
-public class AuthController {
-*/
-import com.project.dlvery.exception.BadRequestException;
-import com.project.dlvery.payload.ApiResponse;
 import com.project.dlvery.payload.AuthResponse;
 import com.project.dlvery.payload.LoginRequest;
-import com.project.dlvery.payload.SignUpRequest;
 import com.project.dlvery.repository.TeamRepository;
 import com.project.dlvery.repository.UserRepository;
 import com.project.dlvery.security.TokenProvider;

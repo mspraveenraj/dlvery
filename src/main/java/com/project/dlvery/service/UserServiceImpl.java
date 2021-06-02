@@ -69,6 +69,11 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public void deleteByUsername(String username) {
+		userRepository.deleteByUsername(username);
+		
+	}
 
 	 @Override
 	    public List<User> findUsersWithPredicate(String paramUsername, String paramFirstName, String paramTeamId, String paramEmail) {
@@ -91,7 +96,5 @@ public class UserServiceImpl implements UserService {
 	public Boolean checkEmailUnique(String email) {
 		return userRepository.existsByEmail(email);
 	}
-
-	
 
 }

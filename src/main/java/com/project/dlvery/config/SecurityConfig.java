@@ -114,10 +114,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                     .antMatchers("/auth/**", "/oauth2/**", "/login/**", "/logout/**")
                         .permitAll()
-                     .antMatchers("/invTeamPage/**","/dlTeamPage/**","/adminPage/**", "/profile/**","/unauthorized","/notFound", "/manifest.json", "/static/**").permitAll()//hasAuthority("InvTeam")
-                     
-                     //.antMatchers("/adminPage/**").hasAuthority("Admin")
-                     //.antMatchers("/dlTeamPage/**").hasAuthority("DLTeam")
+                     .antMatchers("/invTeamPage/**","/dlTeamPage/**","/adminPage/**", "/profile/**","/unauthorized","/notFound", "/manifest.json", "/static/**").permitAll()
                     .anyRequest()
                         .authenticated()
                     .and()
