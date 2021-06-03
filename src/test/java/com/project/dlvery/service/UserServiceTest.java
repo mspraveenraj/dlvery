@@ -47,21 +47,23 @@ public class UserServiceTest {
     @Test
     public void whenGivenUsername_shouldDeleteUser_ifFound(){
         User user = new User();
+        user.setId(1000);
         user.setUsername("Test");
 
         lenient().when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
 
-        userService.deleteByUsername(user.getUsername());
-        verify(userRepository).deleteByUsername(user.getUsername());
+        userService.deleteById(user.getId());
+        verify(userRepository).deleteById(user.getId());
     }
 
     @Test
     public void when_user_doesnt_exist() {
         User user = new User();
+        user.setId(1000);
         user.setUsername("Test Name");
 
         lenient().when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.ofNullable(null));
-        userService.deleteByUsername(user.getUsername());
+        userService.deleteById(user.getId());
     }
     
 

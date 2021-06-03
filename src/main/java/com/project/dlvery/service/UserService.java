@@ -18,7 +18,6 @@ public interface UserService {
 	List<User> findAllUserByTeamAdmin();
 	int getNextId();
 	void deleteById(int id);
-	void deleteByUsername(String username);
 	List<User> findUsersWithPredicate(String paramUsername, String paramFirstName, String paramTeamId, String paramEmail);
 	Boolean checkUsernameUnique(String username);
 	Boolean checkEmailUnique(String email);

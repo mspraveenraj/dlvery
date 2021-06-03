@@ -110,6 +110,7 @@ public class UserController {
     		return new ResponseEntity<>( HttpStatus.EXPECTATION_FAILED);
     	}
     	else {
+    		user.setPassword(passwordEncoder.encode(user.getPassword()));
     		newUser = userService.createUser(user);
     	}
         return new ResponseEntity<>(newUser, HttpStatus.OK);
@@ -143,7 +144,9 @@ public class UserController {
     	updatedUser.setEmail(user.getEmail());
     	updatedUser.setFirstName(user.getFirstName());
     	updatedUser.setLastName(user.getLastName());
-    	updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
+    	//Same Password Overriding Encoding Bug Fix
+    	if(!passwordEncoder.matches(user.getPassword(), updatedUser.getPassword()))
+    		updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
     	
     	Optional<Team> teamOptional = teamService.findById(user.getTeam().getId());
     	if(!teamOptional.isPresent())
@@ -227,13 +230,6 @@ public class UserController {
     	emptyUser.setId(-1);
     	return new ResponseEntity<>(emptyUser, HttpStatus.OK);
 	}
-    
-    @RequestMapping(value ="users/{username}", method = RequestMethod.DELETE)
-    @PreAuthorize("hasAuthority('Admin')")
-	public ResponseEntity<User> deleteUserByUsername(@PathVariable String username){
-    	 userService.deleteByUsername(username);
-    	 return new ResponseEntity<>( HttpStatus.OK);
-    }
     
     @RequestMapping(value = "users/checkUsernameUnique/{username}", method = RequestMethod.GET)
     @PreAuthorize("hasAuthority('Admin')")

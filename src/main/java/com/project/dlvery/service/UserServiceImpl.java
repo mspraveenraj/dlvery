@@ -69,12 +69,6 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	@Override
-	public void deleteByUsername(String username) {
-		userRepository.deleteByUsername(username);
-		
-	}
-
 	 @Override
 	    public List<User> findUsersWithPredicate(String paramUsername, String paramFirstName, String paramTeamId, String paramEmail) {
 
