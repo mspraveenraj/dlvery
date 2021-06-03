@@ -140,18 +140,18 @@ class LoginForm extends Component {
             this.props.history.push("/");
         }).catch(error => {
             
-            if(error.message === "Unexpected end of JSON input")
-            {
+            //if(error.message === "Unexpected end of JSON input")
+            //{
                 toast.error("Bad Credentials", {autoClose: 5000});
-                setInterval( () =>{
+                setTimeout( () =>{
                 
             }, 5000);
-            }
-            else {
-                toast.error(error.message, {autoClose: 5000});
-                    setInterval( () =>{
-                        }, 5000);
-            }
+            //}
+           // else {
+               // toast.error(error.message, {autoClose: 5000});
+                //    setTimeout( () =>{
+                //        }, 5000);
+            //}
         });
     }
     

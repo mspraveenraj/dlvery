@@ -8,6 +8,7 @@ import jsonServerProvider from 'ra-data-json-server';
 import { Person, Group, AddBoxTwoTone } from '@material-ui/icons';
 import { ACCESS_TOKEN, API_BASE_URL } from '../../constants';
 import AdminLogin from './AdminLogin';
+import Logout from '../../common/Logout';
 
   const httpClient = (url, options = {}) => {
     if (!options.headers) {
@@ -21,7 +22,7 @@ import AdminLogin from './AdminLogin';
 const dataProvider = jsonServerProvider(API_BASE_URL, httpClient);
 
 const AdminPage = () => (
-    <Admin dashboard={Dashboard} dataProvider={dataProvider} loginPage={AdminLogin} >
+    <Admin dashboard={Dashboard} dataProvider={dataProvider} loginPage={AdminLogin} logoutButton={<Logout/>}>
         <Resource name="users" list={UserList} edit={UserEdit} create = {UserCreate} icon={Person}/>
         <Resource name="teams" list={TeamList} edit={TeamEdit} create = {TeamCreate} icon={Group}/>
         <Resource name="productCategory" list={ProductCategoryList} edit={ProductCategoryEdit} create = {ProductCategoryCreate} icon={AddBoxTwoTone}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import '../../common/reset.css';
-import {ACCESS_TOKEN } from '../../constants';
+import {ACCESS_TOKEN, API_BASE_URL } from '../../constants';
 import { login } from '../../util/APIUtils';
 
 class AdminLogin extends Component {
@@ -36,8 +36,8 @@ class AdminLogin extends Component {
             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
             this.props.history.push("/");
         }).catch(error => {
-           
-            toast.error("Oops! Something went wrong. Please try again!", {autoClose: 3000});
+          toast.error("Bad Credentials", {autoClose: 3000});
+          //toast.error("Oops! Something went wrong. Please try again!", {autoClose: 3000});
         });
     }
 
@@ -64,7 +64,8 @@ class AdminLogin extends Component {
         <input type="text"  name="username" placeholder="username" onChange={this.handleInputChange} value={this.state.username} autoFocus autoComplete="username" required/>
         <br/>
         <input type="password" name="password" placeholder="password" onChange={this.handleInputChange} value={this.state.password} autoComplete="current-password" required/>
-        <button type="submit">login</button>
+        <button type="submit" style={{height: "auto", width: "35%", margin: "10% 2% 0 auto"}}>login</button>
+        <button type="button" style={{background: "tomato", width: "50%"}} onClick={()=> window.location = API_BASE_URL}>Not Admin?</button>
       </form>
     </div>
   </div>
