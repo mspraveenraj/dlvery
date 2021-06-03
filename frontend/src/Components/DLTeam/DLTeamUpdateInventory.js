@@ -79,9 +79,11 @@ class DLTeamUpdateInventory extends React.Component {
 
     handleSubmit = (props)=> {
         props.preventDefault();
-        toast.success("Added to Inventory", {autoClose: 3000});
-        HomePageDataService.putDLTeamInventory(this.state.inventory, this.state.id);
-        history.push(`/dlTeamPage`);
+        toast.success("Inventory Updated", {autoClose: 3000});
+        setTimeout( () =>{
+          HomePageDataService.putDLTeamInventory(this.state.inventory, this.state.id)
+            .then(history.push(`/dlTeamPage`));
+            }, 3000);
       }
 
   render() {

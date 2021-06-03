@@ -39,7 +39,7 @@ export function login(loginRequest) {
         url: API_BASE_URL + "/auth/login",
         method: 'POST',
         body: JSON.stringify(loginRequest)
-    });
+    })
 }
 
 export function signup(signupRequest) {

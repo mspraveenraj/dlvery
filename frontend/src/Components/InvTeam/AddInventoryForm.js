@@ -82,9 +82,11 @@ class AddInventoryForm extends React.Component {
 
     handleSubmit = (props)=> {
         props.preventDefault();
-        toast.success("Added to Inventory", {autoClose: 3000});
-        HomePageDataService.createInventory(this.state.inventory)
+        toast.success("Added to Inventory", {autoClose: 3000})
+        setTimeout( () =>{
+          HomePageDataService.createInventory(this.state.inventory)
             .then(history.push(`/invTeamPage`))
+               }, 3000);
       }
 
   render() {

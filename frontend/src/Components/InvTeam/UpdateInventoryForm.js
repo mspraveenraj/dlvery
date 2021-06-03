@@ -87,9 +87,12 @@ class UpdateInventoryForm extends React.Component {
 
     handleSubmit = (props)=> {
         props.preventDefault();
-        toast.success("Added to Inventory", {autoClose: 3000});
-        HomePageDataService.putInventory(this.state.inventory, this.state.id)
-            .then( history.push(`/invTeamPage`));
+        toast.success("Inventory Updated", {autoClose: 3000})
+        setTimeout( () =>{
+          HomePageDataService.putInventory(this.state.inventory, this.state.id)
+          .then(history.push(`/invTeamPage`));
+                        }, 3000);
+       
     }
 
   render() {

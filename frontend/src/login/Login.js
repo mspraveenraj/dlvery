@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { GOOGLE_AUTH_URL, ACCESS_TOKEN } from '../constants';
 import { login } from '../util/APIUtils';
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import dlvery_logo from '../img/dlvery_logo.png'
@@ -49,7 +49,7 @@ class Login extends Component {
             <h2 style={{textAlign: "center", fontSize: "20px", paddingTop:"80px"}}>InvTeam Login</h2>
                 <LoginForm {...this.props} />
             <div>
-                <p style={{textAlign: "right", paddingTop: "90%"}}>Built by, <a className="myPortfolio" onClick={() => this.props.history.push("/praveenrajms")}  target="_blank">PraveenRajMS</a> </p>
+                <p style={{textAlign: "right", paddingTop: "90%"}}>Built by, <a className="myPortfolio" href="/praveenrajms" >PraveenRajMS</a> </p>
             </div>
             </div>
         );
@@ -137,14 +137,21 @@ class LoginForm extends Component {
         login(loginRequest)
         .then(response => {
             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-            //Alert.success("You're successfully logged in!");
             this.props.history.push("/");
         }).catch(error => {
-            //Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');
-            toast.error(error.message, {autoClose: 5000});
+            
+            if(error.message === "Unexpected end of JSON input")
+            {
+                toast.error("Bad Credentials", {autoClose: 5000});
                 setInterval( () =>{
                 
             }, 5000);
+            }
+            else {
+                toast.error(error.message, {autoClose: 5000});
+                    setInterval( () =>{
+                        }, 5000);
+            }
         });
     }
     
