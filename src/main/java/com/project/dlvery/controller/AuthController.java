@@ -44,7 +44,7 @@ import com.project.dlvery.security.TokenProvider;
 
 	        Authentication authentication = authenticationManager.authenticate(
 	                new UsernamePasswordAuthenticationToken(
-	                        loginRequest.getUsername(),
+	                        loginRequest.getUsername().trim(),
 	                        loginRequest.getPassword()
 	                )
 	        );
