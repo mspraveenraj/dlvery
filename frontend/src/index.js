@@ -9,6 +9,7 @@ import history from './history'
 import { HashRouter } from 'react-router-dom';
 import axios from 'axios';
 import { ACCESS_TOKEN } from './constants';
+import Popup from 'react-popup';
 
 axios.interceptors.request.use(request => {
   request.headers.Authorization = `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`;
@@ -23,6 +24,7 @@ ReactDOM.render(
     <Router history={history}>
       <App />
       <ToastContainer/>
+      <Popup/>
     </Router>
   </HashRouter>
   ,

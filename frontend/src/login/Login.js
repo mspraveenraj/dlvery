@@ -5,17 +5,32 @@ import { Redirect } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import dlvery_logo from '../img/dlvery_logo.png'
+import Popup from 'react-popup'
 
 class Login extends Component {
+
+    mySpecialPopup = Popup.register({
+        title: 'Note',
+        content: 'Dont Change Password and Dont Delete existing data instead create and delete your own data, because others also want to test.',
+
+        buttons: {
+            right: ['ok']
+        }
+    });
+
     componentDidMount() {
         // If the OAuth2 login encounters an error, the user is redirected to the /login page with an error
         // Here we display the error and then remove the error query parameter from the location.
+        if(localStorage.getItem("entryMessage") !== "alreadyVisited")
+        {
+            Popup.queue(this.mySpecialPopup);
+            localStorage.setItem("entryMessage", "alreadyVisited")
+        }
         if(this.props.location.state && this.props.location.state.error) {
             //setTimeout(() => {
                 //Alert.error(this.props.location.state.error, {
                  //   timeout: 5000
                 //});
-                
                 toast.error(this.props.location.state.error, {autoClose: 5000});
                 setInterval( () =>{
                 this.props.history.replace({
@@ -28,6 +43,7 @@ class Login extends Component {
     
     render() { 
         require('./Login.css')
+        require("./Popup.css")
         if(this.props.authenticated) {
 
             return <Redirect
