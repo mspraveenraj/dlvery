@@ -162,4 +162,19 @@ public class InventoryServiceImpl implements InventoryService {
 	    		return false;//new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
 	    	}
 	}
+
+	@Override
+	public List<Inventory> findByUserAndPriorityDelivery(int userId) {
+		return inventoryRepository.findByDeliveryPriority(userId);
+	}
+
+	@Override
+	public List<Inventory> findByUserAndPendingDelivery(int userId) {
+		return inventoryRepository.findByDeliveryPending(userId);
+	}
+
+	@Override
+	public List<Inventory> findByUserAndAllDelivery(int userId) {
+		return inventoryRepository.findByDeliveryAll(userId);
+	}
 }

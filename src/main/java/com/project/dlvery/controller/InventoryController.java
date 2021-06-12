@@ -236,4 +236,20 @@ public class InventoryController {
     	return new ResponseEntity<>(inventoryService.uploadExcelFile(file), HttpStatus.OK);
   
     }
+    
+    @RequestMapping(value = "dlTeam/priorityDelivery/{userId}", method = RequestMethod.GET) 
+    public ResponseEntity<List<Inventory>> findByUserAndPriorityDelivery(@PathVariable int userId) {
+    	return new ResponseEntity<>(inventoryService.findByUserAndPriorityDelivery(userId), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "dlTeam/pendingDelivery/{userId}", method = RequestMethod.GET) 
+    public ResponseEntity<List<Inventory>> findByUserAndPendingDelivery(@PathVariable int userId) {
+    	return new ResponseEntity<>(inventoryService.findByUserAndPendingDelivery(userId), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "dlTeam/allDelivery/{userId}", method = RequestMethod.GET) 
+    public ResponseEntity<List<Inventory>> findByUserAndAllDelivery(@PathVariable int userId) {
+    	return new ResponseEntity<>(inventoryService.findByUserAndAllDelivery(userId), HttpStatus.OK);
+    }
+    
 }

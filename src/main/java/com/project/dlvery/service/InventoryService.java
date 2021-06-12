@@ -24,4 +24,10 @@ public interface InventoryService {
 	List<InventoryExport> viewAndExportInventories();
 
 	Boolean uploadExcelFile(MultipartFile file);
+
+	List<Inventory> findByUserAndPriorityDelivery(int userId);
+
+	List<Inventory> findByUserAndPendingDelivery(int userId);
+
+	List<Inventory> findByUserAndAllDelivery(int userId);
 }
