@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://localhost:8070';
+export const API_BASE_URL = 'https://dlvery-deployment.herokuapp.com';
 export const ACCESS_TOKEN = 'accessToken';
 
 export const OAUTH2_REDIRECT_URI = 'https://dlvery-deployment.herokuapp.com/oauth2/redirect'
