@@ -1,19 +1,22 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState } from "react"
 import { DataGrid } from '@material-ui/data-grid';
-import DLTeamContext from './DLTeamContext'
 import history from '../../history';
+import HomePageDataService from "../../HomePageDataService";
 
 const DLTeamDeliveryAll = (props) => {
     require("./DLTeamDelivery.css");
     const [inventoryData, setInventoryData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);   
     
-    const value = useContext(DLTeamContext);
+    //const value = useContext(DLTeamContext);
         
     const refreshInventories = () => {
         setIsLoading(true);
-        setInventoryData(value);
-        setIsLoading(false);
+        //setInventoryData(value);
+        //setIsLoading(false);
+        props.userValue.currentUser !== undefined &&  
+        HomePageDataService.retrieveAllDelivery(props.userValue.currentUser.id)
+            .then(response => setInventoryData(response.data)).then(setIsLoading(false))
     }
 
     useEffect(

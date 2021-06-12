@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import HomePageDataService from '../../HomePageDataService'
+import React from 'react'
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,7 +6,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import DLTeamDeliveryPriority from './DLTeamDeliveryPriority'
-import DLTeamContext from './DLTeamContext'
 import DLTeamDeliveryPending from './DLTeamDeliveryPending'
 import DLTeamDeliveryAll from './DLTeamDeliveryAll'
 
@@ -55,17 +53,6 @@ function TabPanel(props) {
 
 const DLTeamPage = (props) => {
      require("./DLTeamPage.css");
-    const [inventoryData, setInventoryData] = useState([]);
-    useEffect( () =>
-        {
-            HomePageDataService.retrieveAllInventoriesByDeliveryAgent(props.currentUser.username)
-                .then(response => 
-                    {
-                        setInventoryData(response.data)
-                    })
-        },[props.currentUser.username]
-    )
-
     
     const classes = useStyles();
     const theme = useTheme();
@@ -80,13 +67,12 @@ const DLTeamPage = (props) => {
     //};
 
     return(
-        
-        <DLTeamContext.Provider value = {inventoryData} >
+      
 
-        <div className={classes.root}>
+      <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          value={false}
+          value={value}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
@@ -100,17 +86,16 @@ const DLTeamPage = (props) => {
       </AppBar>
       
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <DLTeamDeliveryPriority/>
+          <DLTeamDeliveryPriority userValue = {props}/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <DLTeamDeliveryPending/>
+          <DLTeamDeliveryPending userValue = {props}/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <DLTeamDeliveryAll/>
+          <DLTeamDeliveryAll userValue = {props}/>
         </TabPanel>
  
       </div>
-      </DLTeamContext.Provider>
 
     )
 }

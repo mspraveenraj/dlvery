@@ -52,6 +52,18 @@ class HomePageDataService {
         return await axios.put(`${INVENTORY_API_URL}/dlTeam/inventory/${id}`, props).catch(() => {toast.error("Update Inventory Failed", {autoClose: 3000, delay:3000})});
     }
 
+    async retrieveAllPriorityDelivery(userId) {
+        return await axios.get(`${INVENTORY_API_URL}/dlTeam/priorityDelivery/${userId}`).catch(() => {toast.error("List Priority Delivery Failed", {autoClose: 3000, delay:3000})});
+    }
+
+    async retrieveAllPendingDelivery(userId) {
+        return await axios.get(`${INVENTORY_API_URL}/dlTeam/pendingDelivery/${userId}`).catch(() => {toast.error("List Pending Delivery Failed", {autoClose: 3000, delay:3000})});
+    }
+
+    async retrieveAllDelivery(userId) {
+        return await axios.get(`${INVENTORY_API_URL}/dlTeam/allDelivery/${userId}`).catch(() => {toast.error("List All Delivery Failed", {autoClose: 3000, delay:3000})});
+    }
+ 
     //AdminPage
 
     async retrieveAllAdmins() {

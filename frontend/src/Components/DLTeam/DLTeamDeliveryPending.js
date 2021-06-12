@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import { DataGrid } from '@material-ui/data-grid';
-import DLTeamContext from './DLTeamContext'
 import history from '../../history';
+import HomePageDataService from "../../HomePageDataService";
 
 const DLTeamDeliveryPending = (props) => {
     require("./DLTeamDelivery.css");
@@ -9,23 +9,27 @@ const DLTeamDeliveryPending = (props) => {
     const [inventoryData, setInventoryData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);   
     
-    const value = useContext(DLTeamContext);
+    //const value = useContext(DLTeamContext);
         
-    let pendingDelivery = [];
+    //let pendingDelivery = [];
     const refreshInventories = () => {
         setIsLoading(true);
-        Array.prototype.forEach.call(value,
-           (inventory) => {
-               if((inventory.productStatus.status === 'Pending' || inventory.productStatus.status === 'OnTransit') )
-               {
-
-                   pendingDelivery.push(inventory);
-               }
-           }
+        //Array.prototype.forEach.call(value,
+          // (inventory) => {
+           //    if((inventory.productStatus.status === 'Pending' || inventory.productStatus.status === 'OnTransit') )
+            //   {
+                   //pendingDelivery.push(inventory);
+              // }
+           //}
         
-       )
-           setInventoryData(pendingDelivery);
-           setIsLoading(false);
+      // )
+          // setInventoryData(pendingDelivery);
+          // setIsLoading(false);
+      
+      props.userValue.currentUser !== undefined &&  
+      HomePageDataService.retrieveAllPendingDelivery(props.userValue.currentUser.id)
+          .then(response => setInventoryData(response.data)).then(setIsLoading(false))
+
     }
 
     useEffect(

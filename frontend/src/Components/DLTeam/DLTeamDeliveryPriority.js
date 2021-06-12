@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState} from "react"
 import { DataGrid } from '@material-ui/data-grid';
-import DLTeamContext from './DLTeamContext'
 import history from '../../history';
+import HomePageDataService from "../../HomePageDataService";
 
 const DLTeamDeliveryPriority = (props) => {
     require("./DLTeamDelivery.css");
@@ -9,21 +9,25 @@ const DLTeamDeliveryPriority = (props) => {
     const [inventoryData, setInventoryData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);   
     
-    const value = useContext(DLTeamContext);    
-    let priorityDelivery = [];
+    //const value = useContext(DLTeamContext);    
     const refreshInventories = () => {
         setIsLoading(true);
-        Array.prototype.forEach.call(value,
-           (inventory) => {
-               if((inventory.productStatus.status === 'Pending' || inventory.productStatus.status === 'OnTransit') && (inventory.productCategory.name === 'Perishable' || inventory.productCategory.name === 'Emergency'))
-               {
-                   priorityDelivery.push(inventory);
-               }
-           }
+        //Array.prototype.forEach.call(value,
+          // (inventory) => {
+              // if((inventory.productStatus.status === 'Pending' || inventory.productStatus.status === 'OnTransit') && (inventory.productCategory.name === 'Perishable' || inventory.productCategory.name === 'Emergency'))
+              // {
+               //    priorityDelivery.push(inventory);
+              // }
+          // }
         
-       )
-           setInventoryData(priorityDelivery);
-           setIsLoading(false);
+       //)
+       //setInventoryData(priorityDelivery);
+           //setIsLoading(false);
+
+     props.userValue.currentUser !== undefined &&  
+      HomePageDataService.retrieveAllPriorityDelivery(props.userValue.currentUser.id)
+          .then(response => setInventoryData(response.data)).then(setIsLoading(false))
+           
     }
 
     useEffect(
@@ -91,7 +95,6 @@ const DLTeamDeliveryPriority = (props) => {
         </div>
 
         )
-           
                     
 }
 
