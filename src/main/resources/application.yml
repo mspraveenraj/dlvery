@@ -7,7 +7,7 @@ spring:
             google:
               clientId: 804306916416-ukns44fu7qi6bl8kd4bpjk8mv4fnrmav.apps.googleusercontent.com
               clientSecret: gJNSTOhgZlx3X2IIp7lM-Qtb
-              redirectUri: https://dlvery-deployment.herokuapp.com/oauth2/callback/google
+              redirectUri: https://dlveryapp.herokuapp.com/oauth2/callback/google
               scope:
                 - email
                 - profile
@@ -22,6 +22,6 @@ app:
     # redirectUri mentioned by the client in the /oauth2/authorize request.
     # We're not using cookies because they won't work well in mobile clients.
     authorizedRedirectUris:
-      - https://dlvery-deployment.herokuapp.com/oauth2/redirect
+      - https://dlveryapp.herokuapp.com/oauth2/redirect
       #- myandroidapp://oauth2/redirect
       #- myiosapp://oauth2/redirect
